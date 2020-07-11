@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'webpacker', '~> 4.0'
+gem 'bootsnap'
 gem 'sdoc',                    '0.4.0', group: :doc
 
 group :development, :test do
