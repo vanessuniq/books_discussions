@@ -18,11 +18,12 @@ gem 'jbuilder'
 gem 'webpacker', '~> 4.0'
 gem 'bootsnap'
 gem 'sdoc',                    '0.4.0', group: :doc
+ gem 'web-console', group: :development
 
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
-  gem 'web-console'
+  #gem 'web-console'
   gem 'spring'
   gem 'listen'
 end
