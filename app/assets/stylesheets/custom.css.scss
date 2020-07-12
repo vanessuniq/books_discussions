@@ -78,3 +78,40 @@ p {
     color: #fff;
     text-decoration: none;
 }
+
+
+/* footer */
+
+footer {
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+    color: brown;
+}
+
+footer a {
+    color: purple;
+}
+
+footer a:hover {
+    color: #222;
+}
+
+footer small {
+    float: left;
+}
+
+footer img {
+    font-size: 3.75em;
+    height: 3rem;
+}
+
+footer ul {
+    float: right;
+    list-style: none;
+}
+
+footer ul li {
+    float: left;
+    margin-left: 15px;
+}

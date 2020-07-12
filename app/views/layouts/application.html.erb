@@ -8,29 +8,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-      </script>
-    <![endif]-->
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "book caffe", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Log In",   '#' %></li>
-            <li><%= link_to "Books Library",   '#' %></li>
-            <li><%= link_to "Home", home_path %></li>
-          </ul>
-        </nav>
-
-      </div>
-    </header>
+    <%= render 'layouts/header' %>
 
     <div class="container">
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
 
   </body>
