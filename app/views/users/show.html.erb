@@ -1,0 +1,5 @@
+<% provide(:title, @user.username) %>
+<h1>
+  <%= gravatar_for @user %> <!-- adding gravatar img -->
+  <%= @user.username.capitalize %>
+</h1>
