@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:edit, :update, :show]
-  before_action :correct_user, only: [:edit, :update, :show]
+  before_action :require_login, only: [:edit, :update, :show, :index]
+  before_action :correct_user, only: [:edit, :update]
   
+  def index
+    #@users = User.all
+    @users = User.paginate(page: params[:page])
+  end
+
   def new
     @user = User.new
   end
@@ -18,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    @user = User.find_by(id: params[:id])
     # add logic for authorization
 
     #debugger
