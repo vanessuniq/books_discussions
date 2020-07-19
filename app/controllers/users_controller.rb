@@ -21,6 +21,21 @@ class UsersController < ApplicationController
     #debugger
   end
 
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.update(user_params)
+      #handle successful update
+      flash[:success] = 'Your profile has been successfully updated'
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
+
   private
 
   def user_params

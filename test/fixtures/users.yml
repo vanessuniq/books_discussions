@@ -1,3 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+vanessa:
+  username: Vanessa
+  email: vanessa@example.com
+  password_digest: passworddddd
+  admin: true
+  
 
