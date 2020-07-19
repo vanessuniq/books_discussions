@@ -3,9 +3,25 @@
         <%= link_to "book caffe", root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Log In", login_path %></li>
-            <li><%= link_to "Books Library",   '#' %></li>
             <li><%= link_to "Home", home_path %></li>
+            <li><%= link_to "Books Library",   '#' %></li>
+            <% if logged_in? %>
+              <li><%= link_to "Book Lovers", users_path %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Account <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Profile", current_user, class: "dropdown-item" %></li>
+                  <li><%= link_to "Settings", '#' %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Log out", logout_path, method: "delete", class: "dropdown-item" %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li><%= link_to "Log In", login_path %></li>
+            <% end %>
+
           </ul>
         </nav>
 

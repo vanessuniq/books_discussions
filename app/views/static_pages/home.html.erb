@@ -6,11 +6,16 @@
         This is the place where your favorite books conversation happen. This app provides a platform
          to share your views on a book and engage with other book lovers like you.
     </p>
-    <p>
+    <% if logged_in? %>
+      <%= link_to "Join a Discussion", '#', class: "btn btn-lg btn-primary" %>
+    <% else %>
+      <p>
         To get started, <%= link_to "Sign up now", signup_path, class: "btn btn-lg btn-primary" %>
         if you are new here, <b>Or</b> <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary", id: "log" %> 
         as a member to browse books in our library and join or create conversations.
     </p>
+    <% end %>
+    
     
 </div>
 
