@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:edit, :update, :show]
+  before_action :correct_user, only: [:edit, :update, :show]
+  
   def new
     @user = User.new
   end
@@ -15,18 +18,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    
     # add logic for authorization
 
     #debugger
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
+    
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    
     if @user.update(user_params)
       #handle successful update
       flash[:success] = 'Your profile has been successfully updated'
@@ -40,6 +43,22 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+  
+  # confirms user is logged in
+  def require_login
+    unless logged_in?
+      # store requested url
+      requested_url
+      flash[:danger] = 'Please login to access the page'
+      redirect_to login_path
+    end
+  end
+
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    
+    redirect_to root_path unless is_current_user?(@user)
   end
 
 end

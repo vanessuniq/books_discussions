@@ -2,7 +2,7 @@
 vanessa:
   username: Vanessa
   email: vanessa@example.com
-  password_digest: passworddddd
+  password_digest: passworddd
   admin: true
   
 
