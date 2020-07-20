@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(username:  "Example User",
+User.create!(username:  "Vanessa",
     email: "example@example.org",
     password:              "lovelove",
     password_confirmation: "lovelove")
@@ -18,4 +18,22 @@ User.create!(username:  name,
       email: email,
       password:              password,
       password_confirmation: password)
+end
+
+Book.create!(title:  "Thirteen Reasons Why",
+    author: "Jay Asher",
+    genre:              "Fictionn",
+    description: "Thirteen Reasons Why is a young adult novel written in 2007 by Jay Asher. It is 
+    the story of a young high school student as she descends into despair brought on by betrayal 
+    and bullying, culminating with her suicide.")
+
+99.times do |n|
+name  = Faker::Book.title
+author = Faker::Book.author
+genre = Faker::Book.genre
+description = Faker::Lorem.paragraph
+Book.create!(title:  name,
+      author: author,
+      genre:              genre,
+      description: description)
 end

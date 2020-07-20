@@ -4,7 +4,7 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", home_path %></li>
-            <li><%= link_to "Books Library",   '#' %></li>
+            <li><%= link_to "Books Library", books_path %></li>
             <% if logged_in? %>
               <li><%= link_to "Book Lovers", users_path %></li>
               <li class="dropdown">

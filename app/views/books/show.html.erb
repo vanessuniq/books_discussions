@@ -1,0 +1,18 @@
+<% provide(:title, @book.title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="book_info">
+      <h1>
+        Title: <br><br> <span><%= @book.title %></span><br> by <br> <span><%= @book.author %></span>
+      </h1>
+      <h3>Genre: <br> <span><%= @book.genre %></span></h3>
+      <h3>Description:</h3>
+      <p><%= @book.description %></p>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% #if truevalue %>
+      
+    <% #end %>
+  </div>
+</div>

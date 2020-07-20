@@ -1,0 +1,26 @@
+class BooksController < ApplicationController
+    before_action :require_login, only: :destroy
+    before_action :admin_user, only: :destroy
+
+    def index
+       # @books = Book.all
+       #@books = Book.filter(params[:title], params[:genre])
+       @books = Book.paginate(page: params[:page])
+    end
+
+    def show
+        @book = Book.find_by(id: params[:id])
+    end
+
+    def destroy
+        book = Book.find_by(params[:id])
+        if book
+            book.destroy
+            flash[:success] = "#{book.title} successfully deleted"
+      
+        else
+            flash[:danger] = 'Unable to delete the selected book'
+        end
+        redirect_to books_path
+    end
+end

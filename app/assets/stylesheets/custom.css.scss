@@ -110,7 +110,8 @@ p {
 /* sidebar */
 
 aside {
-    section.user_info {
+    section.user_info,
+    section.book_info {
         margin-top: 20px;
     }
     section {
@@ -124,6 +125,7 @@ aside {
             display: block;
             margin-bottom: 3px;
             line-height: 1;
+            color: hotpink;
         }
         h1 {
             font-size: 1.4em;
@@ -210,7 +212,8 @@ footer {
 
 /* Users index */
 
-.users {
+.users,
+.books {
     list-style: none;
     margin: 0;
     li {
