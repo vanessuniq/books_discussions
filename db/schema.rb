@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_005537) do
+ActiveRecord::Schema.define(version: 2020_07_20_055919) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2020_07_20_005537) do
     t.string "genre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "discussions", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_discussions_on_book_id"
+    t.index ["user_id", "book_id", "created_at"], name: "index_discussions_on_user_id_and_book_id_and_created_at"
+    t.index ["user_id"], name: "index_discussions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,4 +42,6 @@ ActiveRecord::Schema.define(version: 2020_07_20_005537) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "discussions", "books"
+  add_foreign_key "discussions", "users"
 end

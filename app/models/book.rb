@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  has_many :discussions, dependent: :destroy
+  has_many :users, through: :discussion
     validates_presence_of :title, :author
 
     def self.filter(title, genre)

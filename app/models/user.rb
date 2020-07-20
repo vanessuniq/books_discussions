@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    has_many :discussions, dependent: :destroy
+    has_many :books, through: :discussion
+
     before_save :downcase_email
 
     validates :username, presence: true, length: {minimum: 4}
