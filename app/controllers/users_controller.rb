@@ -64,6 +64,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
   
-  
+  # validate current user
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    
+    redirect_to root_path unless is_current_user?(@user)
+  end
 
 end

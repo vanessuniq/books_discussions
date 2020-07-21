@@ -13,6 +13,9 @@
         <p><span class="content"><%= @discussion.content %></span></p>
         <span class="timestamp">
             Posted <%= time_ago_in_words(@discussion.created_at) %> ago.
+            <% if is_current_user?(@discussion.user) %>
+              <%= link_to "delete", @discussion, method: :delete, data: {confirm: "Would you like to delete this post?"} %>
+            <% end %>
         </span>
     </div>
     

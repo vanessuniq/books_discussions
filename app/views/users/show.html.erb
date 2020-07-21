@@ -7,13 +7,17 @@
         <%= @user.username %>
       </h1>
     </section>
-    <section class="discussion_form">
-      <%= render "discussions/form" %>
+    <% if is_current_user?(@user) %>
+      <section class="discussion_form">
+        <%= render "discussions/form" %>
     </section>
+    <% end %>
+    
   </aside>
   <div class="col-md-8">
+    <h3><%= pluralize(@user.discussions.count, 'discussion') %></h3>
     <% if @user.discussions.any? %>
-      <h3>Discussions: (<%= @user.discussions.count %>)</h3>
+      
       <ol class="discussions">
         
           <%= render @discussions %>

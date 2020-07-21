@@ -1,12 +1,13 @@
 class DiscussionsController < ApplicationController
     before_action :require_login, only: [:new, :create, :show, :index, :destroy]
+    before_action :correct_user, only: :destroy
 
     def index
         if params[:book_id] && Book.exists?(params[:book_id])
             @discussions = Book.find(params[:book_id]).discussions.paginate(page: params[:page], per_page: 15)
             
-            if @discussions.nil?
-                flash[:danger] = "There's no book with the given genre or no discusiion yet regarding books in selected genre"
+            if @discussions.empty?
+                flash[:danger] = "There's no discusiion yet regarding the selected book"
                 redirect_to discussions_path  
             end 
         else
@@ -46,12 +47,24 @@ class DiscussionsController < ApplicationController
     end
 
     def destroy
-        
+        @discussion.destroy
+        flash[:success] = "Discussion deleted"
+        redirect_to request.referrer || current_user
     end
 
     private
 
     def discussion_params
-        params.require(:discussion).permit(:content, :book_id, :query)
+        params.require(:discussion).permit(:content, :book_id)
     end
+
+    # validate current user
+  def correct_user
+    @discussion = current_user.discussions.find_by(id: params[:id])
+    if @discussion.nil?
+        flash[:danger] = 'Unable to delete discussion'
+        redirect_to current_user
+    end
+    
+  end
 end

@@ -14,13 +14,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # validate current user
-  def correct_user
-    @user = User.find_by(id: params[:id])
-    
-    redirect_to root_path unless is_current_user?(@user)
-  end
-
   # confirm admin
   def admin_user
     redirect_to root_path unless current_user.admin?
