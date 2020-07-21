@@ -2,19 +2,22 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="book_info">
-      <h1>
+      <h3>
         Title: <br><br> <span><%= @book.title %></span><br> by <br> <span><%= @book.author %></span>
-      </h1>
-      <h3>Genre: <br> <span><%= @book.genre %></span></h3>
-      <h3>Description:</h3>
-      <p><%= @book.description %></p>
+      </h3>
+      <h4>Genre: <br> <span><%= @book.genre %></span></h4>
+      <h4>Description:</h4>
+      <p><%= @book.description %></p><br><br>
     </section>
+    <%= link_to 'Post new discussion', new_book_discussion_path(@book), class: "btn btn-primary" %>
   </aside>
   <div class="col-md-8">
     <% if @book.discussions.any? %>
       <h3>Discussions: (<%= @book.discussions.count %>)</h3>
       <ol class="discussions">
-        <%= render @discussions %>
+        
+          <%= render @discussions %>
+        
       </ol>
       <%= will_paginate @discussions %>
     <% end %>

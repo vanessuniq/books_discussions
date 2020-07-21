@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/home', to: "static_pages#home"
   resources :users
-  resources :books, only: [:show, :index, :destroy]
-  resources :discussions, only: [:create, :destroy]
+  resources :books, only: [:show, :index, :destroy] do
+    resources :discussions, only: [:new, :show, :index]
+  end
+  resources :discussions, only: [:index, :new, :show, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

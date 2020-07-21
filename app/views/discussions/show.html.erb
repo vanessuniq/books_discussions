@@ -1,0 +1,11 @@
+<% provide(:title, 'Discussion Feed') %>
+
+<div class="center jumbotron">
+    <%= render @discussion.book %>
+    <br><br>
+    <ol class="discussions">
+        <%= render @discussion %>
+    </ol>
+</div>
+
+<p><%= link_to 'Return to Discussions list', discussions_path, class: "btn btn-lg btn-primary", id: "log" %></p>

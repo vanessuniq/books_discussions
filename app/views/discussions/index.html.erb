@@ -1,0 +1,18 @@
+<% provide(:title, 'Books Discussions') %>
+<h1>Existing Discussions </h1>
+<div>
+  <h3>Search discussions by book</h3>
+  <%= form_tag discussions_path, method: :get do %>
+    <%= select_tag "book_id", options_from_collection_for_select(Book.all, "id", "title"), include_blank: 'filter by book' %>
+    <%= submit_tag 'filter', class: "btn btn-primary" %>
+  <% end %>
+</div><br><br>
+ <p><%= link_to 'Post new discussion', new_discussion_path, class: "btn btn-lg btn-primary", id: "log" %></p>
+
+<%= will_paginate %>
+
+<ul class='books'>
+    <%= render @discussions %>
+</ul>
+
+<%= will_paginate %>

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       # store requested url
       requested_url
-      flash[:danger] = 'Please login to access the page'
+      flash[:danger] = 'Please login to access the page or post a discussion'
       redirect_to login_path
     end
   end

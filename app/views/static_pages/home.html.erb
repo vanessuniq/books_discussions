@@ -7,7 +7,7 @@
          to share your views on a book and engage with other book lovers like you.
     </p>
     <% if logged_in? %>
-      <%= link_to "Join a Discussion", '#', class: "btn btn-lg btn-primary" %>
+      <%= link_to "Join a Discussion", discussions_path, class: "btn btn-lg btn-primary" %>
     <% else %>
       <p>
         To get started, <%= link_to "Sign up now", signup_path, class: "btn btn-lg btn-primary" %>
