@@ -9,14 +9,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@discussion) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <%= book_id_field(@discussion) %>
-        <div class="field">
-            <%= f.text_area :content, placeholder: "Compose new discussion post..." %>
-        </div>
-        <%= f.submit "Post", class: "btn btn-primary" %>
-    <% end %>
+    <%= render 'form' %>
   </div>
 </div>
 

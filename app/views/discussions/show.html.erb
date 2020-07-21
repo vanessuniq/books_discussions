@@ -1,11 +1,21 @@
 <% provide(:title, 'Discussion Feed') %>
 
-<div class="center jumbotron">
+<div class="row">
     <%= render @discussion.book %>
     <br><br>
-    <ol class="discussions">
-        <%= render @discussion %>
-    </ol>
+    <section class="user_info">
+      <h3>
+        <%= gravatar_for @discussion.user %>
+        <%= link_to @discussion.user.username, @discussion.user %>
+      </h3>
+    </section>
+    <div class="discussions">
+        <p><span class="content"><%= @discussion.content %></span></p>
+        <span class="timestamp">
+            Posted <%= time_ago_in_words(@discussion.created_at) %> ago.
+        </span>
+    </div>
+    
 </div>
-
+<br><br>
 <p><%= link_to 'Return to Discussions list', discussions_path, class: "btn btn-lg btn-primary", id: "log" %></p>

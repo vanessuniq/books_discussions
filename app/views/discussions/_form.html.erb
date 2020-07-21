@@ -1,0 +1,8 @@
+<%= form_for(@discussion) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= book_id_field(@discussion) %>
+        <div class="field">
+            <%= f.text_area :content, placeholder: "Compose new discussion post...", class: 'form-control' %>
+        </div>
+        <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

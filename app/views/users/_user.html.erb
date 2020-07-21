@@ -1,6 +1,7 @@
 <li>
     <%= gravatar_for user, size: 50 %>
-    <%= link_to user.username, user %>
+    <%= link_to user.username, user %> ---||---
+    <%= pluralize(user.discussions.count, 'discussion') %>
     <% if current_user.admin? && !is_current_user?(user) %>
       | <%= link_to "delete account", user, method: :delete, data: {confirm: "Are you sure?"} %>
     <% end %>
