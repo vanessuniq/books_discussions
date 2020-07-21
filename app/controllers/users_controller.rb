@@ -25,8 +25,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    # add logic for authorization
-
+    redirect_to users_path unless @user
+    @discussions = @user.discussions.paginate(page: params[:page], per_page: 5)
     #debugger
   end
 

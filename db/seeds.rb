@@ -37,3 +37,9 @@ Book.create!(title:  name,
       genre:              genre,
       description: description)
 end
+
+users = User.order(:created_at).take(6)
+10.times do
+  content = Faker::Lorem.sentence(word_count: 20)
+  users.each { |user| user.discussions.create!(content: content, book_id: rand(1..20)) }
+end

@@ -1,0 +1,9 @@
+<li id="discussion-<%= discussion.id %>">
+  <%= link_to gravatar_for(discussion.user, size: 50), discussion.user %>
+  <span class="user"><%= link_to discussion.user.username, discussion.user %>    </span>
+  <span class="book">          |     Book: <%= link_to discussion.book.title, discussion.book %></span>
+  <span class="content"><%= discussion.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(discussion.created_at) %> ago.
+  </span>
+</li>

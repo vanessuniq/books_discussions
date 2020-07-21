@@ -10,6 +10,8 @@ class BooksController < ApplicationController
 
     def show
         @book = Book.find_by(id: params[:id])
+        redirect_to books_path unless @book
+        @discussions = @book.discussions.paginate(page: params[:page], per_page: 5)
     end
 
     def destroy
