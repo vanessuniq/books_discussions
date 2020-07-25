@@ -1,0 +1,10 @@
+<h1>Edit Comment</h1>
+
+<div class="discussions">
+    <%= render @discussion %>
+</div>
+<div class="container-fluid">
+    <%= render 'form' %>
+    <br><br>
+    <%= link_to "Return to discussion", @comment.discussion %>
+</div>

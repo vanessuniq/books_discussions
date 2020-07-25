@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :discussions, dependent: :destroy
     has_many :books, through: :discussion
+    has_many :comments, dependent: :destroy
 
     before_save :downcase_email
 

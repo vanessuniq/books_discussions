@@ -1,24 +1,56 @@
 <% provide(:title, 'Discussion Feed') %>
-
+<!-- book info -->
 <div class="row">
-    <%= render @discussion.book %>
-    <br><br>
-    <section class="user_info">
-      <h3>
+    
+    <div class="col-sm-8 col-md-9 col-lg-10">
+      <%= render @discussion.book %>
+      <br>
+    </div>
+</div>
+<!-- discussion -->
+<div class="row">
+    
+    <div class="col-sm-10">
+      <h5>
         <%= gravatar_for @discussion.user %>
         <%= link_to @discussion.user.username, @discussion.user %>
-      </h3>
-    </section>
-    <div class="discussions">
+      </h5>
+      <br><br><br>
+      <div class="discussions">
         <p><span class="content"><%= @discussion.content %></span></p>
-        <span class="timestamp">
+      </div>
+      
+    </div>
+
+    <div class="col-sm-6">
+      <span class="timestamp" style="color:brown">
             Posted <%= time_ago_in_words(@discussion.created_at) %> ago.
             <% if is_current_user?(@discussion.user) %>
-              <%= link_to "delete", @discussion, method: :delete, data: {confirm: "Would you like to delete this post?"} %>
+             --||-- <%= link_to "delete discussion", @discussion, method: :delete, data: {confirm: "Would you like to delete this post?"} %>
             <% end %>
         </span>
     </div>
-    
+  
 </div>
+<br><br>
+<!-- comments -->
+
+<% if @discussion.comments.any? %>
+  <div class="container" >
+    <ol class="discussions">
+        
+      <%= render @comments %>
+        
+    </ol>
+    <%= will_paginate @comments %>
+  </div> 
+<% end %>
+<br><br>
+<!-- add comment -->
+<section class="discussion_form">
+  
+  <%= render "comments/form" %>
+</section>
+
 <br><br>
 <p><%= link_to 'Return to Discussions list', discussions_path, class: "btn btn-lg btn-primary", id: "log" %></p>

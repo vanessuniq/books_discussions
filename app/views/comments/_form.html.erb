@@ -1,0 +1,12 @@
+<%= form_with(model: [@discussion, @comment]) do |f| %>
+    <%= render 'shared/error_messages', object: @comment %>
+    <%= f.hidden_field :discussion_id %>
+    <div >
+        <%= f.label :content, class: "sr-only" %>
+        <%= f.text_area :content, class: "form-control", size: "100x5", 
+        placeholder: "Enter comment here!" %>
+    </div>
+    <div class="actions">
+        <%= f.submit "post comment", class: "btn btn-lg btn-primary pull-right" %>
+    </div>
+<% end %>

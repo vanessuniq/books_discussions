@@ -43,6 +43,9 @@ class DiscussionsController < ApplicationController
         if @discussion.nil?
             flash[:danger] = 'Discussion not found or has been deleted'
             redirect_to discussions_path
+        else
+            @comment = Comment.new(discussion_id: @discussion.id)
+            @comments = @discussion.comments.paginate(page: params[:page], per_page: 5)
         end
     end
 
@@ -59,12 +62,12 @@ class DiscussionsController < ApplicationController
     end
 
     # validate current user
-  def correct_user
-    @discussion = current_user.discussions.find_by(id: params[:id])
-    if @discussion.nil?
-        flash[:danger] = 'Unable to delete discussion'
-        redirect_to current_user
-    end
+    def correct_user
+        @discussion = current_user.discussions.find_by(id: params[:id])
+        if @discussion.nil?
+            flash[:danger] = 'Unable to delete discussion'
+            redirect_to current_user
+        end
     
-  end
+    end
 end

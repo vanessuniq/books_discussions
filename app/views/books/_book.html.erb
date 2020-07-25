@@ -3,6 +3,6 @@
     <h3><%= link_to book.title, book %> by <%= book.author %></h3>
     <h4>Number of Discussions: <%= book.discussions.count %> </h4>
     <% if current_user.try(:admin?) %>
-      | <%= link_to "delete account", book, method: :delete, data: {confirm: "Are you sure?"} %>
+      | <%= link_to "Delete book", book, method: :delete, data: {confirm: "Are you sure?"} %>
     <% end %>
 </li>

@@ -1,0 +1,12 @@
+<li id="comment-<%= comment.id %>">
+  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+  <span class="user"><%= link_to comment.user.username, comment.user %></span>
+  <span class="content"><%= comment.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+    <% if is_current_user?(comment.user) %>
+      <%= link_to "Edit comment", edit_discussion_comment_path(comment.discussion, comment) %>  ||
+      <%= link_to "Delete comment", [comment.discussion, comment], method: :delete, data: {confirm: "Would you like to delete this post?"} %>
+    <% end %>
+  </span>
+</li>
