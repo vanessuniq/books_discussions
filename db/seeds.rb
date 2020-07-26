@@ -50,7 +50,7 @@ users = User.order(:created_at).take(10)
   end 
 
 5.times do
-  users.each {|user|user.comments.create!(content: Faker::Lorem.sentence(word_count: 20) , discussion_id: rand(1..50)) }
+  users.each {|user| user.comments.create!(content: Faker::Lorem.sentence(word_count: 20) , discussion: Discussion.all.sample)}
 end
 
 end
