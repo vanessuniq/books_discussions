@@ -21,6 +21,7 @@ User.create!(username:  name,
       password_confirmation: password)
 end
 
+# books
 Book.create!(title:  "Thirteen Reasons Why",
     author: "Jay Asher",
     genre:              "Fictionn",
@@ -39,8 +40,14 @@ Book.create!(title:  name,
       description: description)
 end
 
-users = User.order(:created_at).take(6)
-10.times do
+# discussions, comments
+users = User.order(:created_at).take(10)
+5.times do
   content = Faker::Lorem.sentence(word_count: 20)
-  users.each { |user| user.discussions.create!(content: content, book_id: rand(1..20)) }
+  users.each do |user|
+    user.discussions.create!(content: content, book_id: rand(1..50))
+    user.comments.create!(content: content, discussion_id: rand(1..50))
+  end  
+
 end
+
