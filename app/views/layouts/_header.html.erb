@@ -1,6 +1,14 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <%= link_to "book caffe", root_path, id: "logo" %>
+        <%= form_tag(books_path, method: :get, class: "navbar-form navbar-left") do %>
+          <div class="input-group">
+            <%= search_field_tag :search, params[:search], placeholder: "search book by title", class: "form-control" %>
+            <div class="input-group-btn">
+              <%= button_tag "", class: "btn btn-info glyphicon glyphicon-search", name: nil %>
+            </div>
+          </div>
+        <% end %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", home_path %></li>

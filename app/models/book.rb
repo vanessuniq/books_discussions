@@ -3,17 +3,14 @@ class Book < ApplicationRecord
   has_many :users, through: :discussion
     validates_presence_of :title, :author
 
-    def self.filter(title, genre)
-        if title.present? && genre.present?
-          where(title: title, genre: genre)
-        elsif title.present?
-          where("TITLE like?", "%#{title}%")
-          
-        elsif genre.present?
-          where("GENRE like?", "%#{genre}%")
-        else
-          self.paginate(page: params[:page])
-        end
+    def self.search(query)
+      if query.present?
+        query = query.titlecase
+        self.all.where("lower(title) LIKE :search", search: "%#{query}%")
+      else
+        self
       end
+        
+    end
     
 end
