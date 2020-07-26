@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     redirect_to users_path unless @user
-    @discussion = Discussion.new(book_id: params[:book_id])
+    @discussion = @user.discussions.build
+    
     @discussions = @user.discussions.paginate(page: params[:page], per_page: 5)
     #debugger
   end

@@ -37,6 +37,7 @@
 
 <% if @discussion.comments.any? %>
   <div class="container" >
+    <em><b>Comments:</b></em>
     <ol class="discussions">
         
       <%= render @comments %>
@@ -49,7 +50,7 @@
 <!-- add comment -->
 <section class="discussion_form">
   
-  <%= render "comments/form" %>
+  <%= render partial: "comments/form" %>
 </section>
 
 <br><br>

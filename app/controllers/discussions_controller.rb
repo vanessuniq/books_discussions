@@ -40,11 +40,13 @@ class DiscussionsController < ApplicationController
 
     def show
         @discussion = Discussion.find_by(id: params[:id])
+        
         if @discussion.nil?
             flash[:danger] = 'Discussion not found or has been deleted'
             redirect_to discussions_path
         else
-            @comment = Comment.new(discussion_id: @discussion.id)
+            #@comment = Comment.new(discussion_id: @discussion.id)
+            @comment = @discussion.comments.build
             @comments = @discussion.comments.paginate(page: params[:page], per_page: 5)
         end
     end

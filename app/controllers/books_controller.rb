@@ -4,7 +4,6 @@ class BooksController < ApplicationController
 
     def index
        # @books = Book.all
-       #@books = Book.filter(params[:title], params[:genre])
        #@books = Book.paginate(page: params[:page])
        @books = Book.search(params[:search]).paginate(page: params[:page], per_page: 15)
        flash.now[:danger] = "No results matching your query" if @books.empty?
