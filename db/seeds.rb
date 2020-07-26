@@ -46,8 +46,12 @@ users = User.order(:created_at).take(10)
   content = Faker::Lorem.sentence(word_count: 20)
   users.each do |user|
     user.discussions.create!(content: content, book_id: rand(1..50))
-    user.comments.create!(content: content, discussion_id: rand(1..50))
-  end  
+    
+  end 
+
+5.times do
+  users.each {|user|user.comments.create!(content: Faker::Lorem.sentence(word_count: 20) , discussion_id: rand(1..50)) }
+end
 
 end
 
