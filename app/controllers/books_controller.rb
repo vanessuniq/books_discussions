@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        book = Book.find_by(params[:id])
+        book = Book.find_by(id: params[:id])
         if book
             book.destroy
             flash[:success] = "#{book.title} successfully deleted"

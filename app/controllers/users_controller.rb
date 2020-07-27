@@ -25,10 +25,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    redirect_to users_path unless @user
-    @discussion = @user.discussions.build
+    if @user.nil?
+      flash[:danger] = "user does not exist or has been deleted"
+      redirect_to users_path
+    else
+      @discussion = @user.discussions.build
     
-    @discussions = @user.discussions.paginate(page: params[:page], per_page: 5)
+      @discussions = @user.discussions.paginate(page: params[:page], per_page: 5)
+    end
+     
+    
     #debugger
   end
 
@@ -48,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find_by(params[:id])
+    user = User.find_by(id: params[:id])
     if user
       user.destroy
       flash[:success] = 'Account successfully deleted'
