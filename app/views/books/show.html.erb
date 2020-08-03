@@ -14,6 +14,9 @@
   <div class="col-md-8">
     <% if @book.discussions.any? %>
       <h3>Discussions: (<%= @book.discussions.count %>)</h3>
+
+      
+      <h3>Active users: <%= pluralize(@book.active_users.count, 'user') %></h3>
       <ol class="discussions">
         
           <%= render @discussions %>

@@ -25,7 +25,8 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome back #{user.username}!"
       redirect_back_or user
     else
-      user.password = "google_auth"
+      # generate random password
+      user.password = SecureRandom.hex(10)
       # Access_token is used to authenticate request made from the rails application to the google server
       user.google_token = access_token.credentials.token
       # Refresh_token to request new access_token
