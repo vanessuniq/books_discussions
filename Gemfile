@@ -19,7 +19,7 @@ gem 'jbuilder'
 gem 'webpacker', '~> 4.0'
 gem 'bootsnap'
 gem 'omniauth-google-oauth2'
-gem 'sdoc',                    '0.4.0', group: :doc
+gem 'sdoc',                    '0.4.2', group: :doc
  gem 'web-console', group: :development
 
 group :development, :test do
