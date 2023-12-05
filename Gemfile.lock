@@ -65,7 +65,7 @@ GEM
     ansi (1.5.0)
     autoprefixer-rails (9.8.5)
       execjs
-    bcrypt (3.1.13)
+    bcrypt (3.1.20)
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
